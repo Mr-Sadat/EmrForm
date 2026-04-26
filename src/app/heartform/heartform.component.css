@@ -1,0 +1,581 @@
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 80px;
+   width: 100%;
+}
+
+.body {
+  flex: 1;
+  padding-bottom: 30px;
+  padding-right: 15px;
+  width: 99%;
+}
+
+.biginput {
+  border: 1px rgb(216, 209, 209) solid;
+  border-radius: 5px;
+  height: 35px;
+  width: 100px;
+  text-align: right;
+  color: gray;
+}
+.biginput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #0d6efd40;
+}
+
+
+
+
+.drinput {
+  border: 1px  #e0e0e0 solid;
+  border-radius: 2px;
+  height: 33px;
+  width: 60px;
+  text-align: center;
+  
+}
+.drinput:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem #0d6efd40
+}
+.smallinput {
+  border: 1px rgb(216, 209, 209) solid;
+  border-radius: 7px;
+  height: 30px;
+  width: 60px;
+  text-align: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+span {
+  color: gray;
+  font-size: 12px;
+}
+
+.buttonGroup {
+  border: none;
+}
+.biglabel {
+  margin-bottom: 8px;
+  margin-top: 50px;
+  color: gray;
+}
+.bigbutton {
+  border: 1px rgb(216, 209, 209) solid;
+  height: 40px;
+  width: 140px;
+  text-align: center;
+  color: gray;
+
+  box-shadow: none !important;
+  border-radius: 7px;
+}
+button mat-icon {
+  font-size: 28px; /* همه آیکون‌های داخل دکمه‌ها */
+  text-align: center;
+}
+
+.mat-button-toggle-checked {
+  background-color: #2196f3 !important; /* آبی */
+  color: white !important; /* متن سفید */
+}
+
+.body {
+  margin-top: 150px;
+}
+.line {
+ width: 1px;
+  height: 80px;
+  background-color: rgb(228, 220, 220);
+}
+.container {
+  min-height: 90px;
+  width: 100%;
+}
+.field {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 0;
+}
+.value {
+  font-size: 12px;
+  margin-top: 0;
+  color: black;
+}
+.avatar {
+  font-size: 20px;
+  border-radius: 50%;
+  background-color: #eff1f7;
+  padding: 10px;
+  color: gray;
+  margin-left: 10px;
+  width: 20px;
+}
+b {
+  flex-grow: 1;
+  font-size: 15px !important;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding-right: 0;
+}
+
+.infor {
+ line-height: 22px;
+  text-align: center;
+}
+.infor2 {
+ line-height: 22px;
+  text-align: start;
+}
+.save-print {
+  width: 100%;
+}
+mat-card {
+  width: 100%;
+}
+.card-name {
+  max-width: 100%;
+}
+
+.mat-mdc-unelevated-button > .mat-icon,
+.mat-mdc-stroked-button > .mat-icon,
+.mat-mdc-outlined-button > .mat-icon {
+  font-size: 25px;
+  height: 25px;
+  width: 35px;
+  margin-left: 0;
+  margin-right: 0;
+  text-decoration: none;
+}
+.header-button {
+  border: none;
+  border-radius: 80px;
+}
+.save {
+  border-radius: 50px;
+}
+
+.detail {
+  margin-bottom: 15px;
+  margin-right: 0;
+}
+
+.mat-button-toggle + .mat-button-toggle {
+  border-left: solid 1px #c0bfbf;
+  border-right: solid 1px #c0bfbf;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  border: solid 1px #c0bfbf;
+}
+.textarea:focus , .textareaform:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #0d6efd40;
+}
+
+
+.textareaform {
+  width: 98%;
+  height: 60px;
+  border: solid 1px #c0bfbf;
+}
+
+button {
+  min-width: unset !important;
+  white-space: nowrap;
+}
+b,
+span,
+div {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.form,
+mat-card,
+.container,
+mat-toolbar {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* تقویم */
+::ng-deep .custom-date-picker .mdc-notched-outline {
+  top: 10px !important;
+  height: 37px !important;
+  border-width: 1px !important;
+  
+}
+
+
+
+  /* استایل نواحی قابل کلیک */
+  .clickable-area {
+    fill: transparent; /* در حالت عادی نامرئی */
+    stroke: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  /* وقتی موس روی ناحیه می‌رود */
+  .clickable-area:hover {
+    fill: rgba(255, 255, 255, 0.3); /* هایلایت سفید شیشه‌ای */
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 5;
+  }
+    svg {
+    display: block;
+    width: 100%;
+    height: 350px;
+  }
+
+
+.numberinput {
+  border: 1px rgb(216, 209, 209) solid;
+  border-radius: 7px;
+  height: 30px;
+  width: 20%;
+  text-align: center;
+}
+.numberinput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #0d6efd40;
+}
+
+
+
+.example-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+  width: 50%;
+}
+.iconclose{
+  width: 30%;
+  text-align: end;
+  
+}
+.titleheader{
+  width: 70%;
+  text-align: start;
+}
+
+
+
+.font-32 {
+  font-size: 32px;
+}
+
+.btn-gray {
+  color: #9e9e9e;
+}
+
+
+
+mat-drawer-content {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+ 
+}
+
+.date-wrapper {
+  width: 96%;
+  direction: rtl;
+}
+
+/* حذف outline پیش‌فرض */
+::ng-deep .custom-date-picker .mdc-notched-outline {
+  display: none !important;
+}
+
+/* باکس اصلی */
+::ng-deep .custom-date-picker .mat-mdc-text-field-wrapper {
+  height: 36px !important;
+  min-height: 36px !important;
+  border: 2px solid #e0e0e0 !important;
+  border-radius: 4px !important;
+  background-color: #ffffff !important;
+  padding: 0 8px !important;
+
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* hover */
+::ng-deep .custom-date-picker .mat-mdc-text-field-wrapper:hover {
+  border-color: #86b7fe !important;
+}
+
+/* حذف padding داخلی */
+::ng-deep .custom-date-picker .mat-mdc-form-field-infix {
+  padding: 0 !important;
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* input */
+::ng-deep .custom-date-picker input {
+  height: 100% !important;
+  line-height: 36px !important;
+  text-align: right !important;
+  font-size: 14px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* container مربوط به suffix (خیلی مهم برای هم‌تراز شدن) */
+::ng-deep .custom-date-picker .mat-mdc-form-field-suffix {
+  display: flex !important;
+  align-items: center !important;
+  margin-left: 4px !important;
+}
+
+/* آیکن */
+::ng-deep .custom-date-picker .mat-mdc-icon-button {
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #757575 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.template-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 200;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 20px;
+}
+
+.template-panel {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+  display: flex;
+  direction: ltr;
+  overflow: hidden;
+}
+
+.template-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  direction: rtl;
+  overflow: hidden;
+}
+
+.template-right {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-left: 1px solid #e5e7eb;
+  background: #f8fafc;
+  direction: rtl;
+}
+
+.template-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.template-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.template-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.template-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.template-input {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  height: 36px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.template-preview {
+  flex: 1;
+  overflow: auto;
+  border: 1px dashed #d1d5db;
+  border-radius: 10px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+
+.template-search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.template-list-item {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.template-list-item:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+.template-list-title {
+  font-size: 13px;
+  color: #111827;
+}
+
+.template-list-meta {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.template-empty {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.template-save-btn {
+  border-radius: 8px;
+}
+
+.template-close-btn {
+  border-radius: 8px;
+  min-width: 40px;
+  padding: 0 6px;
+}
+
+@media (max-width: 900px) {
+  .template-panel {
+    flex-direction: column;
+    height: auto;
+    max-height: 95vh;
+  }
+
+  .template-right {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+}
+
+.template-list-item {
+  position: relative;
+}
+
+.template-delete-btn {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.template-list-item:hover .template-delete-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.restore-template {
+  border-radius: 50px;
+}

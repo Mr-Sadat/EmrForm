@@ -1,0 +1,305 @@
+:root {
+  --border-color: rgb(216, 209, 209);
+  --focus-border: #86b7fe;
+  --focus-shadow: 0 0 0 0.25rem #0d6efd40;
+  --text-muted: gray;
+  --primary-color: #2196f3;
+}
+
+.form {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+ 
+}
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 80px;
+}
+
+.body {
+  flex: 1;
+  padding-bottom: 30px;
+  padding-right: 30px;
+  margin-top: 150px;
+}
+
+.biginput {
+  border: 1px rgb(216, 209, 209) solid;
+  border-radius: 7px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  margin-right: 30px;
+}
+.biginput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #0d6efd40;
+}
+
+.nursinput {
+  border: 1px rgb(216, 209, 209) solid;
+  border-radius: 2px;
+
+  height: 33px;
+  width: 60px;
+  text-align: center;
+}
+
+.nursinput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #0d6efd40;
+}
+
+.smallinput {
+  border: 1px rgb(216, 209, 209) solid;
+  border-radius: 7px;
+  height: 30px;
+  width: 60px;
+  text-align: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.smallinput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #0d6efd40;
+}
+span {
+  color: gray;
+  font-size: 12px;
+}
+.buttonGroup {
+  border: none;
+}
+.biglabel {
+  margin-right: 35px;
+  margin-bottom: 8px;
+  color: gray;
+}
+.bigbutton {
+  border: 1px rgb(216, 209, 209) solid;
+  height: 40px;
+  width: 140px;
+  text-align: center;
+  color: gray;
+  margin-right: 20px;
+  box-shadow: none !important;
+  border-radius: 7px;
+}
+button mat-icon {
+  font-size: 28px; 
+  text-align: center;
+}
+.mat-button-toggle-checked {
+  background-color: #2196f3 !important; 
+  color: white !important; 
+}
+.line {
+ width: 1px;
+  height: 80px;
+  background-color: rgb(228, 220, 220);
+}
+.container {
+  min-height: 90px;
+  width: 100%;
+}
+.field {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 0;
+}
+.value {
+  font-size: 12px;
+  margin-top: 0;
+  color: black;
+}
+.avatar {
+  font-size: 20px;
+  border-radius: 50%;
+  background-color: #eff1f7;
+  padding: 10px;
+  color: gray;
+  margin-left: 10px;
+  width: 20px;
+}
+b {
+  flex-grow: 1;
+  font-size: 15px !important;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding-right: 0;
+}
+.card-name {
+  max-width: 100%;
+}
+.infor {
+ line-height: 22px;
+  text-align: center;
+}
+.infor2 {
+ line-height: 22px;
+  text-align: start;
+}
+.save-print {
+  width: 100%;
+}
+mat-card {
+  width: 100%;
+}
+
+.mat-mdc-unelevated-button > .mat-icon,
+.mat-mdc-stroked-button > .mat-icon,
+.mat-mdc-outlined-button > .mat-icon {
+  font-size: 25px;
+  height: 25px;
+  width: 35px;
+  margin-left: 0;
+  margin-right: 0;
+  text-decoration: none;
+}
+.print {
+  border: none;
+  border-radius: 80px;
+}
+.save {
+  border-radius: 50px;
+  
+}
+
+/* مهمههههههه استایل بغل های دکمه های گروهی هست  */
+.mat-button-toggle + .mat-button-toggle {
+  border-left: solid 1px #e0e0e0;
+  border-right: solid 1px #e0e0e0;
+  border-top:solid 1px #e0e0e0; ;
+  text-align: center;
+}
+/* تنظیمات کلی برای Material Input و Autocomplete */
+mat-form-field {
+  width: 100%;
+  max-width: 800px;
+  font-family: 'Iran Sans', sans-serif; /* فونت کل فرم */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-radius: 8px; /* لبه‌های گرد */
+  border-color: #4caf50; /* رنگ خط بیرونی */
+}
+
+input.mat-input-element {
+  font-family: 'Iran Sans', sans-serif; /* فونت داخل input */
+  font-size: 16px; /* سایز فونت */
+}
+
+.mat-autocomplete-panel {
+  border-radius: 8px; /* لبه‌های گرد پاپ‌آپ */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* سایه پاپ‌آپ */
+  max-height: 300px; /* حداکثر ارتفاع برای پاپ‌آپ */
+  overflow-y: auto; /* اسکرول عمودی */
+}
+
+/* استایل برای هر گزینه در پاپ‌آپ */
+.mat-option {
+  font-family: 'Iran Sans', sans-serif; /* فونت لیست گزینه‌ها */
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.mat-option:hover {
+  background-color: #f1f1f1; /* رنگ پس‌زمینه گزینه در حالت hover */
+}
+
+.mat-option.mat-active {
+  background-color: #4caf50; /* رنگ پس‌زمینه گزینه انتخاب‌شده */
+  color: white; /* رنگ متن انتخاب‌شده */
+}
+
+.mat-autocomplete-trigger {
+  font-family: 'Iran Sans', sans-serif; /* فونت trigger */
+}
+
+
+
+
+
+
+.print-area{
+  display: none;
+}
+
+/* Responsive layout */
+:host {
+  display: block;
+  width: 100%;
+}
+
+[fxLayout="row"] {
+  flex-wrap: wrap;
+}
+
+[fxLayout="row"] > * {
+  min-width: 0;
+}
+
+input,
+select,
+textarea,
+.biginput,
+.smallinput,
+.nursinput {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+mat-button-toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bigbutton {
+  width: clamp(96px, 22vw, 140px);
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+@media (max-width: 1200px) {
+  .body {
+    padding-right: 14px;
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 992px) {
+  .form {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  mat-toolbar {
+    height: auto;
+    min-height: 72px;
+  }
+
+  .body {
+    margin-top: 16px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .line {
+    display: none;
+  }
+}
+

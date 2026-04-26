@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: #baffd0;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url("assets/fonts/iran-sans/iran-sans.ttf") format("truetype"),
+    url("assets/fonts/iran-sans/iran-sans.woff") format("woff");
+
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+.cdk-overlay-container .mat-tooltip,
+.cdk-overlay-container .mat-mdc-tooltip,
+.cdk-overlay-container .mat-mdc-tooltip .mdc-tooltip__surface,
+.cdk-overlay-container .mat-mdc-tooltip .mat-mdc-tooltip-surface {
+  font-family: "IranSans", sans-serif !important;
+  font-size: 12px !important;
+  color: #fff !important;
+  background-color: #333 !important;
+}
+
+
+
+
+
+* {
+  font-family: "IranSans", sans-serif;
+  font-size: 12px;
+}
+
+
+.mat-mdc-input-element {
+  padding-right: 5px;
+}
+
+
+
+.snackbar-success {
+  --mdc-snackbar-container-color: #2e7d32 !important;  /* پس‌زمینه */
+  --mdc-snackbar-supporting-text-color: #fff !important; /* متن */
+}
+/* متن داخل snackbar */
+.snackbar-success .mat-mdc-snack-bar-label {
+  font-family: "IranSans", sans-serif !important;
+  font-size: 14px !important;
+}
+
+.snackbar-error {
+  --mdc-snackbar-container-color: #d32f2f !important;  /* پس‌زمینه */
+  --mdc-snackbar-supporting-text-color: #fff !important; /* متن */
+}
+/* متن داخل snackbar */
+.snackbar-error .mat-mdc-snack-bar-label {
+  font-family: "IranSans", sans-serif !important;
+  font-size: 14px !important;
+}
+
+.snackbar-warning {
+  --mdc-snackbar-container-color: #ed6c02 !important;  /* پس‌زمینه */
+  --mdc-snackbar-supporting-text-color: #fff !important; /* متن */
+}
+/* متن داخل snackbar */
+.snackbar-warning .mat-mdc-snack-bar-label {
+  font-family: "IranSans", sans-serif !important;
+  font-size: 14px !important;
+}
+
+
+
+
+/* تنظیمات اصلی سایز و نمایش آیکن‌ها */
+.material-icons,
+.material-icons-outlined,
+.material-icons-round,
+.material-icons-sharp,
+.material-icons-two-tone,
+.material-icons-outlined-thin {
+  font-size: 24px; /* سایز استاندارد */
+  line-height: 1;
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+  
+
+  
+ 

@@ -1,0 +1,24 @@
+mat-sidenav {
+  width: 300px;
+  background-color: #130a36;
+    color: #d6d0e6;
+    overflow: hidden;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+
+}

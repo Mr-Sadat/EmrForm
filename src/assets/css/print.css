@@ -1,0 +1,165 @@
+
+
+  @font-face {
+    font-family: "IranSans";
+    src: url("assets/fonts/iran-sans/iran-sans.ttf") format("truetype"),
+         url("assets/fonts/iran-sans/iran-sans.woff") format("woff");
+    font-display: swap;
+  }
+  
+  * {
+    font-family: "IranSans", sans-serif;
+    font-size: 13px;
+    box-sizing: border-box;
+  }
+  
+
+  
+  /* ===== Layout ===== */
+@page {
+  size: A4;
+  margin:0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  border: 1px salid black;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden; /* جلوگیری از ایجاد صفحه سوم */
+  page-break-after: always;
+}
+
+.page:last-of-type {
+  page-break-after: auto;
+}
+
+
+  
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    margin: auto;
+    height: 100px;
+    display: flex;
+  }
+  
+  /* ===== Typography ===== */
+  
+  .title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .bold { font-weight: bold; }
+  .center { text-align: center; }
+  .gray { background: #f3f3f3; }
+  
+  /* ===== Tables ===== */
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    border: 2px solid #000;
+    padding: 3px 4px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .noneborder { border: none; }
+  .empty { height: 20px; }
+  
+  .medical-table {
+    direction: rtl;
+  }
+  
+  .medical-table td {
+    padding: 4px 3px;
+    white-space: nowrap;
+  }
+  
+  /* ===== Labels ===== */
+  
+  .label-fa {
+    text-align: right;
+    width: 8%;
+    border-left: none;
+  }
+  
+  .label-en {
+    text-align: left;
+    direction: ltr;
+    width: 5%;
+    border-right: none;
+  }
+  
+  .value {
+    text-align: center;
+    width: 10%;
+    border-right: none;
+    border-left: none;
+  }
+  
+  /* ===== Forms ===== */
+  
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+  }
+  
+  /* ===== Sections ===== */
+  
+  .fa {
+    text-align: start;
+    direction: rtl;
+    border-left: none;
+  }
+  
+  .En {
+    text-align: start;
+    direction: ltr;
+    border-right: none;
+  }
+  
+  .drug {
+    display: flex;
+  }
+  
+  .heparin {
+    width: 30%;
+  }
+  
+  .titlebox {
+    margin-top: 70px;
+  }
+  
+  .emptybox {
+    height: 400px;
+    border: 2px solid black;
+    margin: 10px;
+  }
+  
+  .explain {
+    line-height: 40px;
+    text-align: center;
+    padding: 10px 40px;
+    font-size: 14px;
+  }

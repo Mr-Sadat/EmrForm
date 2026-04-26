@@ -1,0 +1,35 @@
+<mat-accordion>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>medical_services</mat-icon> &nbsp; پاراکلینیک فرعی
+      </mat-panel-title>
+     
+    </mat-expansion-panel-header>
+    <ul fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20px">
+      <li><a routerLink="emr-form" (click)="selectForm('2.6','dialysis')" (click)="siderclosemenu()">فرم دیالیز</a></li>
+    </ul>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>favorite_border</mat-icon> &nbsp; پرونده قلبی عروقی
+      </mat-panel-title>
+     
+    </mat-expansion-panel-header>
+    <ul fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20px">
+      <li><a routerLink="emr-form" (click)="selectForm('2.8','tee-echo')" (click)="siderclosemenu()">فرم اکو مری</a></li>
+     
+    </ul>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+

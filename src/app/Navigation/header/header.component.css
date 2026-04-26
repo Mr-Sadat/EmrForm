@@ -1,0 +1,46 @@
+mat-toolbar{
+  height: 40px;
+}
+.mat-mdc-icon-button.mat-mdc-button-base {
+  width: 34px;
+  height: 37px;
+  padding: 4px;
+}
+.person{
+    width: 100%;
+}
+div button {
+    background-color: white;
+  
+}
+
+.Dialog {
+direction: ltr;
+  position: absolute;
+  top: 40px;
+  left:20px;
+ width: 120px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.Dialog-item {
+  padding: 12px 16px;
+  text-align: right;
+  direction: rtl;
+}
+.Dialog-item.title {
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+}
+.Dialog-item.logout {
+  cursor: pointer;
+  align-items: center;
+}
+
+.Dialog-item.logout:hover {
+  background-color: #f5f5f5;
+}

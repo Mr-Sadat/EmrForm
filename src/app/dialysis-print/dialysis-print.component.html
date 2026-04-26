@@ -1,0 +1,376 @@
+<div #printArea class="print-area" >
+ 
+    <div class="page">
+    
+    <!-- Header -->
+     <div class="Header">
+      <div class="logo"  >
+        <img   src="لوگوی-وزارت-بهداشت.png" alt=""> 
+      </div>
+      <div class="center">
+        <h3 class="title">وزارت بهداشت ،درمان ،آموزش پزشکی</h3>
+        <h3 class="title">Ministry of Health & Medical Education</h3>
+      </div>
+      <div class="logo"><img  src="Artboard-4-copy-2-1.png" alt=""> </div>
+     </div>
+    <!-- Patient Info -->
+    <table class="medical-table">
+        <tr>
+            <td class="label-fa">شماره پرونده:</td>
+            <td class="value bold">{{ (patient$ | async)?.admpcode }}</td>
+           <td class="label-en">Unit NO:</td>
+       
+            <td class="title" colspan="3">گزارش پرستاری همودیالیز</td>
+            <td class="label-fa">بیمه:</td>
+            <td class="value bold">{{ (patient$ | async)?.bimehname }}</td>
+            <td class="label-en">Insurance:</td>
+        </tr>
+    
+        <tr>
+            <td class="label-fa">نام خانوادگی:</td>
+            <td class="value bold">{{ (patient$ | async)?.family }}</td>
+            <td class="label-en">Last Name:</td>
+    
+            <td class="label-fa">بخش:</td>
+            <td class="value bold">{{ (patient$ | async)?.partname }}</td>
+            <td class="label-en">ward:</td>
+    
+            <td class="label-fa">پزشک معالج:</td>
+            <td class="value bold"> {{ (patient$ | async)?.drname }}</td>
+            <td class="label-en">Attending Physician:</td>
+        </tr>
+    
+        <tr>
+           <td class="label-fa">نام:</td>
+            <td class="value bold">{{ (patient$ | async)?.name }}</td>
+            <td class="label-en">Name:</td>
+    
+            <td class="label-fa">تخت:</td>
+            <td class="value bold">02</td>
+            <td class="label-en">Bed:</td>
+    
+            <td class="label-fa">تاریخ پذیرش:</td>
+            <td class="value bold" >{{ (patient$ | async)?.date }}</td>
+           <td class="label-en">Admission Date:</td>
+    
+            
+        </tr>
+    
+        <tr>
+          <td class="label-fa">نام پدر:</td>
+            <td class="value bold">{{ (patient$ | async)?.fathername }}</td>
+            <td class="label-en">Father Name:</td>
+            
+    
+             <td class="label-fa">نوبت کاری:</td>
+             <td class="value bold">
+              {{ form.get('shift')?.value === '1' ? 'صبح' :
+                 form.get('shift')?.value === '2' ? 'ظهر' :
+                 form.get('shift')?.value === '3' ? 'شب' : '' }}
+            </td>
+            <td class="label-en">Shift:</td>
+    
+           <td class="label-fa">ساعت شروع:</td>
+            <td class="value bold">{{ form.get('startTime')?.value }}</td>
+             <td class="label-en">Time On:</td>
+            
+    
+        </tr>
+    
+        <tr>
+           <td class="label-fa">سن بیمار :</td>
+            <td class="value bold">{{ (patient$ | async)?.age }}</td>
+            <td class="label-en">Age:</td>
+            
+            <td class="empty" colspan="3"></td>
+    
+            <td class="label-fa">ساعت پایان:</td>
+            <td class="value bold">{{ form.get('endTime')?.value }}</td>
+            <td class="label-en">Time Off:</td>
+            
+        </tr>
+    </table>
+    <!-- Diagnosis -->
+    <table>
+    <tr class="gray center bold ">
+      <td colspan="2" class="fa">تشخیص</td>
+      <td colspan="2" class="En">Diagnosis</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        
+        <input type="checkbox" class="chk" [attr.checked]="form.get('diagnosis')?.value === 2 ? '' : null"
+        >  
+         <span class="fa">نارسایی مزمن کلیه</span>
+        <span class="En">Chronic kidney failure</span>   
+        
+      </td>
+      <td colspan="2">
+        <input type="checkbox" class="chk"  [attr.checked]="form.get('diagnosis')?.value === 1 ? '' : null"
+        > 
+        <span class="fa">نارسایی حاد کلیه</span>
+         <span class="En">Acute kidney failure</span>   
+        
+      </td>
+    </tr>
+    </table>
+    
+    <!-- Vital Signs Before -->
+    <table>
+    <tr class="gray center bold">
+      <td colspan="3" class="fa">علائم حیاتی قبل از دیالیز:</td>
+      <td colspan="3" class="En">Vital Signs Before Dialysis:</td>
+    </tr>
+    <tr >
+      <td class="noneborder center">وزن: {{ form.get('beforeWeight')?.value }}</td>
+      <td class="noneborder center" >فشار خون: {{ form.get('beforeSystolicBP')?.value }} /
+        {{ form.get('beforeDiastolicBP')?.value }}</td>
+      <td class="noneborder center">درجه حرارت: {{ form.get('beforeTemprature')?.value }}
+      </td>
+      <td class="noneborder center">تعداد ضربان: {{ form.get('beforePr')?.value }}
+      </td>
+      <td class="noneborder center">تعداد تنفس: {{ form.get('beforeRR')?.value }}
+      </td>
+    </tr>
+    <tr>
+      <td class="noneborder center">Weight (Kg)</td>
+      <td class="noneborder center">BP mmHg</td>
+      <td class="noneborder center">T</td>
+      <td class="noneborder center">PR / min</td>
+      <td class="noneborder center">RR / min</td>
+    </tr>
+    
+    </table>
+    
+    <!-- Vital Signs After -->
+    <table>
+    <tr class="gray center bold">
+      <td colspan="3" class="fa">علائم حیاتی بعد از دیالیز:</td>
+      <td colspan="3" class="En">Vital Signs After Dialysis:</td>
+    </tr>
+    <tr >
+      <td class="noneborder center">وزن: {{ form.get('afterWeight')?.value }}</td>
+      <td class="noneborder center">
+        فشار خون:
+        {{ form.get('afterSystolicBP')?.value }} /
+        {{ form.get('afterDiastolicBP')?.value }}
+      </td>
+      <td class="noneborder center">دما: {{ form.get('afterTemprature')?.value }}</td>
+      <td class="noneborder center">نبض: {{ form.get('afterPR')?.value }}</td>
+      <td class="noneborder center">تنفس: {{ form.get('afterRR')?.value }}</td>
+    </tr>
+    <tr>
+      <td class="noneborder center">Weight (Kg)</td>
+      <td class="noneborder center">BP mmHg</td>
+      <td class="noneborder center">T</td>
+      <td class="noneborder center">PR / min</td>
+      <td class="noneborder center">RR / min</td>
+    </tr>
+    </table>
+    
+    <!-- Vascular Access -->
+    <table>
+    <tr class="gray center bold">
+      <td colspan="3" class="fa">نوع دسترسی به عروق:</td>
+      <td colspan="3" class="En">Kind of Vascular Access:</td>
+    </tr>
+    <tr>
+      <td class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('vascularAccess')?.value === 1 ? '' : null"> انیستول شریانی وریدی</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('vascularAccess')?.value === 2 ? '' : null"> کاتتر ورید مرکزی</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('vascularAccess')?.value === 3 ? '' : null"> موقت</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('vascularAccess')?.value === 4 ? '' : null"> دائم</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('vascularAccess')?.value === 5 ? '' : null"> رگ مصنوعی</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('vascularAccess')?.value === 6 ? '' : null"> سایر موارد</td>
+    </tr>
+    </table>
+    
+    <!-- Dialysis Settings -->
+    <table>
+    <tr >
+      
+      <td colspan="3"  class="label-fa" >نوع و شماره ماشین دیالیز:</td> <td class="value bold">JMS50</td>
+      <td colspan="4"  class="label-fa"> نوع صافی   : </td> <td class="value bold">{{ form.get('smoothness')?.value }}</td>
+    </tr>
+        <tr>
+            <td  class="label-fa">وزن خشک:</td>
+            <td class="value bold">{{ form.get('dryWeight')?.value }}</td>
+           <td class="label-en">Dry Weight:</td>
+       
+           <td class="label-fa">جریان خون :</td>
+            <td class="value bold">{{ form.get('bloodFlow')?.value }}</td>
+           <td class="label-en">Blood Flow:</td>
+    
+           <td class="label-fa"> جریان محلول:</td>
+            <td class="value bold">{{ form.get('solutionFlow')?.value }}</td>
+           <td class="label-en">{{ form.get('Tmp')?.value }}</td>
+        </tr>
+        <tr>
+            <td class="label-fa">حرارت:</td>
+            <td class="value bold">{{ form.get('Tmp')?.value }}</td>
+           <td class="label-en">TMP:</td>
+       
+           <td class="label-fa"> نوع بافر:
+            <td class="value bold">{{ form.get('bafferType')?.value }}</td>
+           <td class="label-en"> Buffer:</td>
+           
+           <td class="label-fa"> دمای محلول:</td>
+            <td class="value bold">{{ form.get('solutionTemperature')?.value }}</td>
+           <td class="label-en">Dialysis Tem :</td>
+        </tr>
+    </table>
+    <table>
+      <tr>
+    <td class="label-fa">غلظت سدیم محلول:</td>
+            <td class="value bold">{{ form.get('solubleNa')?.value }}</td>
+           <td class="label-en">Sodium Con:</td>
+       
+           <td class="label-fa"> میزان UF </td>
+            <td class="value bold">{{ form.get('UF')?.value }}</td>
+           <td class="label-en"> UF</td>
+           
+           <td class="label-fa">فشار وریدی</td>
+            <td class="value bold">{{ form.get('arterialPressure')?.value }}</td>
+           <td class="label-en">Arterial pressure</td>
+    
+            <td class="label-fa"> دمای محلول</td>
+            <td class="value bold">{{ form.get('venousPressure')?.value }}</td>
+           <td class="label-en">Venous pressure </td>
+      
+    </tr>
+    </table>
+    <!-- Viral Markers -->
+    <table>
+    <tr class="gray center bold">
+      <td colspan="3" class="fa">مارکرهای ویروسی:</td>
+      <td colspan="3" class="En">Viral Markers:</td>
+    </tr>
+    <tr class="center">
+      <td colspan="2" class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('viralMarket')?.value === 1 ? '' : null">HBS</td>
+      <td colspan="2"  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('viralMarket')?.value === 2 ? '' : null">HCV</td>
+      <td colspan="2" class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('viralMarket')?.value === 3? '' : null"> HIV</td>
+    </tr>
+    </table>
+    
+    <!-- Profile -->
+    <table>
+    <tr class="gray center bold">
+      <td colspan="3" class="fa"> پروفایل:</td>
+      <td colspan="3" class="En">Profile:</td>
+    </tr>
+    <tr class="center">
+      <td class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('profile')?.value === 1 ? '' : null">سدیم</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('profile')?.value === 2 ? '' : null">بی کربنات</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('profile')?.value === 3 ? '' : null">دما</td>
+      <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('profile')?.value === 4 ? '' : null">محلول دیالیز</td>
+        <td  class="noneborder"><input type="checkbox" class="chk" [attr.checked]="form.get('profile')?.value === 5 ? '' : null">اولترافیلتراسیون</td>
+    </tr>
+    </table>
+    
+    <!-- Nursing Evalution -->
+    <table>
+    <tr class="gray center bold">
+      <td colspan="3" class="fa"> ارزیابی بیمار توسط پرستار حین دیالیز:</td>
+      <td colspan="3" class="En">Nursing Evalution:</td>
+    </tr>
+    <tr >
+      <td  class="center bold"> ساعت:</td>
+      <td  class="center bold">فشارخون :</td>
+      <td  class="center bold">عوارض احتمالی :</td>
+      <td  class="center bold">اقدام درمانی :</td>
+    </tr>
+    <tr *ngFor="let item of form.get('duringDialysis')?.value">
+    <td class="empty"> {{ 
+      item.time === '1' ? 'اول' : 
+      item.time === '2' ? 'دوم' :
+      item.time === '3' ? 'سوم' :
+      item.time === '4' ? 'چهارم' : ''
+    }}</td>
+    <td class="empty">{{ item.bp }}</td>
+    <td class="empty">{{ item.possibleSideEffects }}</td>
+    <td class="empty">{{ item.therapeuticAction }}</td>
+    </tr>
+    </table>
+    <div class="drug" >
+      <table class="heparin">
+        <tr class="gray center bold">
+        <td colspan="2"  class="noneborder label-fa  ">هپارین مصرفی
+         </td> <tr class="gray center bold"><td colspan="2" class="noneborder label-en ">Presciption Heparin</td></tr>
+          
+        
+        
+       
+        <tr><td class="noneborder label-fa">Unitas</td> <td class="value noneborder">
+         {{form.get('prime')?.value === '1' ? 0 :
+          form.get('prime')?.value === '2' ? 2500 : '' }}
+        </td><td class="noneborder label-en">Prime</td></tr>
+        <tr><td class="noneborder label-fa">Unitas</td> <td class="value noneborder">
+          {{form.get('bolus')?.value === '1' ? 5000 :
+          form.get('bolus')?.value === '2' ? 2500 : '' }}
+        </td><td class="noneborder label-en">Bolus</td></tr>
+        <tr><td class="noneborder label-fa">Unitas</td> <td class="value noneborder">
+          {{form.get('continuos')?.value === '1' ? '-' : ''}}
+        </td><td class="noneborder label-en">Continuos</td></tr>
+        <tr><td class="noneborder label-fa">Unitas</td> <td class="value noneborder">
+          {{form.get('total')?.value === '1' ? 5000 :
+          form.get('total')?.value === '2' ? 2300 : '' }}
+        </td><td class="noneborder label-en">Total</td></tr>
+      </table>
+      <table >
+        <tr class="gray center bold">
+        <td colspan="3" class="fa">فرآورده های خونی و دارو های مصرفی :</td>
+        <td  colspan="3" class="En">Medications</td></tr>
+        <tr>
+          <td colspan="2" class="center bold">نام دارو</td>
+          <td colspan="2" class="center bold">مقدار مصرف</td>
+          <td colspan="2" class="center bold">نحوه مصرف</td>
+        </tr>
+        <tr *ngFor="let med of form.get('medications')?.value">
+      <td colspan="2" class="empty">{{ med.name }}</td>
+      <td colspan="2" class="empty">{{ amountMap[med.amount] || '' }}</td>
+      <td colspan="2" class="empty">{{  drugUsageMap[med.Howtouse] || '' }}</td>
+       </tr>
+      </table>
+    </div>
+    
+    
+    <!-- Sign -->
+    <table>
+    <tr>
+      <td class="label-fa">پرستار شروع کننده: {{ form.get('nurse1name')?.value }}</td>
+      <td class="label-fa">پرستار پایان دهنده:{{ form.get('nurse2name')?.value }}</td>
+      
+    </tr>
+    </table>
+    
+    </div>
+    
+    <div class="page" >
+    <div class="titlebox bold"><p >دستورات پزشک در صورت نیاز بیمار به اقدام درمانی در حین دیالیز</p>
+    <div class="emptybox" >
+    
+    </div>
+    </div>
+    
+    <p class="titlebox bold">ملاحضات پرستاری</p>
+    <div  class="emptybox">
+      <p class="explain">مددجو مورد درمان با همودیالیز (ESRD) ساعت ............ جهت انجام همودیالیز وارد بخش شد و در
+    
+    وضعیت مراقبتی ............ قرار دارد. محدودیت حرکتی ............ PO یا رژیم ............ است. محل
+    
+    دسترسی عروقی از نظر عفونت کنترل گردید، مورد قابل پیگیری وجود بیمار ............ حین دیالیز
+    
+    مشکل ............ در پایان دیالیز ناحیه دسترسی عروقی از نظر خونریزی بررسی و پانسمان شد. جلسه
+    
+    بعدی دیالیز با وی هماهنگ شد. آموزش حین ورود و حین دیالیز و ترخیص به وی داده شد. بیمار با
+    
+    کنترل وضعیت بالینی و علائم حیاتی در بخش ............ بخش ترک کرد.
+    <p class="explain">مهر امضاء پرستار
+    </p>
+    
+    </div>
+    
+    </div>
+  
+
+
+  </div> 

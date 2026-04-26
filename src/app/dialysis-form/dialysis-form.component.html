@@ -1,0 +1,771 @@
+<div class="form" fxLayout="column" [formGroup]="dialysisForm">
+  <mat-toolbar fxLayout="column">
+    <div class="save-print" fxLayout="column" fxLayoutGap="10px">
+      <div>
+        <ul fxLayout="row" fxLayoutGap="10px">
+          <li>
+            <button
+              type="button"
+              mat-stroked-button
+              color="white"
+              class="save"
+              (click)="save()"
+            >
+              <mat-icon fontSet="material-icons-outlined-thin">save</mat-icon>
+              <b>ذخیره</b>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              mat-stroked-button
+              class="print"
+              (click)="printForm()"
+              matTooltip="چاپ"
+            >
+              <mat-icon fontSet="material-icons-outlined-thin">print</mat-icon>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              mat-stroked-button
+              class="print"
+              (click)="signForm()"
+              [color]="dialysisForm.get('isSigned')?.value ? 'primary' : ''"
+              matTooltip="امضاء"
+            >
+              <mat-icon fontSet="material-icons-outlined-thin"> draw </mat-icon>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div id="title"><b>گزارش پرستاری همودیالیز</b></div>
+    </div>
+    <mat-card>
+      <mat-card-content>
+        <div
+          class="container"
+          fxLayoutAlign="space-between center"
+          fxLayout="row wrap"
+          fxLayoutGap="20px"
+        >
+          <div fxLayout="row" fxLayoutGap="10px" fxFlex="1 1 auto">
+            <div
+              fxLayout="column"
+              fxLayoutGap="10px"
+              fxLayoutAlign="start center"
+            >
+              <img
+                src="https://trt-co.ir/shafanew/assets/images/svg/man.svg"
+                class="avatar"
+              />
+              <mat-icon fontSet="material-icons-outlined">door_front</mat-icon>
+            </div>
+            <div fxLayout="column" class="card-name">
+              <b>
+                {{ (patient$ | async)?.name }}
+                {{ (patient$ | async)?.family }}</b
+              >
+              <span>
+                {{ (patient$ | async)?.age }} سال - بستری - نام پدر:
+                {{ (patient$ | async)?.fathername }} -
+                {{ (patient$ | async)?.bimehname }} -
+                {{ (patient$ | async)?.bimehname2 }}</span
+              >
+            </div>
+          </div>
+          <div class="line" fxHide.lt-md></div>
+          <div class="infor" fxFlex="2 1 auto">
+            <div
+              fxLayout="row wrap"
+              fxLayoutGap="24px"
+              fxLayoutAlign="space-between center"
+            >
+              <div fxLayout="column">
+                <span class="field">کدپذیرش</span>
+                <b class="value"> {{ (patient$ | async)?.admcode }}</b>
+              </div>
+              <div fxLayout="column">
+                <span class="field">کدملی</span>
+                <b class="value"> {{ (patient$ | async)?.nationalcode }}</b>
+              </div>
+              <div fxLayout="column">
+                <span class="field">شماره پرونده</span>
+                <b class="value"> {{ (patient$ | async)?.admpcode }}</b>
+              </div>
+              <div fxLayout="column">
+                <span class="field">تاریخ پذیرش</span>
+                <span class="value"> {{ (patient$ | async)?.date }} </span>
+              </div>
+              <div fxLayout="column">
+                <span class="field">پزشک معالج</span>
+                <span class="value"> {{ (patient$ | async)?.drname }}</span>
+              </div>
+            </div>
+            <div class="infor2" fxLayout="column">
+              <span class="field">بخش</span>
+              <span class="value"> {{ (patient$ | async)?.partname }}</span>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-toolbar>
+  <div class="body" fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row">
+      <div fxLayout="column">
+        <label class="biglabel" for="starttime">ساعت شروع</label>
+        <div>
+          <input
+            class="biginput"
+            name="starttime"
+            type="time"
+            title="ساعت "
+            formControlName="startTime"
+          />
+        </div>
+      </div>
+      <div fxLayout="column">
+        <label class="biglabel" for="starttime">ساعت پایان</label>
+        <div>
+          <input
+            class="biginput"
+            name="starttime"
+            type="time"
+            title="ساعت پایان"
+            formControlName="endTime"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <div fxLayout="column" fxLayoutGap="4px">
+        <label class="biglabel" for="Nobat">نوبت کاری</label>
+        <div>
+          <select
+            fxFlex="240px"
+            class="biginput"
+            name="Nobat"
+            formControlName="shift"
+          >
+            <option value=""></option>
+            <option value="1">M</option>
+            <option value="2">E</option>
+            <option value="3">N</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div fxLayoutGap="8px" fxLayout="column">
+      <div>
+        <label class="biglabel" for="">تشخیص</label>
+        <div>
+          <mat-button-toggle-group
+            class="buttonGroup"
+            formControlName="diagnosis"
+          >
+            <mat-button-toggle class="bigbutton" [value]="1"
+              >نارسایی حاد کلیه
+            </mat-button-toggle>
+            <mat-button-toggle class="bigbutton" [value]="2"
+              >نارسایی مزمن کلیه
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayoutGap="10px" fxLayout="column">
+      <div><b>علائم حیاتی قبل از دیالیز</b></div>
+      <div fxLayoutGap="160px" fxLayout="row">
+        <div>
+          <span>وزن</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="beforeWeight"
+          />
+          <span>Kg</span>
+        </div>
+        <div>
+          <span>فشارخون</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="beforeSystolicBP"
+          />
+          <span>/</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="beforeDiastolicBP"
+          />
+          <span>mmHg</span>
+        </div>
+        <div>
+          <span>درجه حرارت</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="beforeTemprature"
+          />
+          <span>c</span>
+        </div>
+        <div>
+          <span>تعداد ضربان</span>
+          <input class="smallinput" type="number" formControlName="beforePr" />
+          <span>PR/min</span>
+        </div>
+        <div>
+          <span>تعداد تنفس</span>
+          <input class="smallinput" type="number" formControlName="beforeRR" />
+          <span>RR/min</span>
+        </div>
+      </div>
+    </div>
+    <div fxLayoutGap="10px" fxLayout="column">
+      <div><b>علائم حیاتی بعد از دیالیز</b></div>
+      <div fxLayoutGap="160px" fxLayout="row">
+        <div>
+          <span>وزن</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="afterWeight"
+          />
+          <span>Kg</span>
+        </div>
+        <div>
+          <span>فشارخون</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="afterSystolicBP"
+          />
+          <span>/</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="afterDiastolicBP"
+          />
+          <span>mmHg</span>
+        </div>
+        <div>
+          <span>درجه حرارت</span>
+          <input
+            class="smallinput"
+            type="number"
+            formControlName="afterTemprature"
+          />
+          <span>c</span>
+        </div>
+        <div>
+          <span>تعداد ضربان</span>
+          <input class="smallinput" type="number" formControlName="afterPR" />
+          <span>PR/min</span>
+        </div>
+        <div>
+          <span>تعداد تنفس</span>
+          <input class="smallinput" type="number" formControlName="afterRR" />
+          <span>RR/min</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div fxLayoutGap="10px" fxLayout="column">
+        <label class="biglabel">نوع دسترسی به عروق</label>
+        <div>
+          <mat-button-toggle-group
+            class="buttonGroup"
+            formControlName="vascularAccess"
+          >
+            <mat-button-toggle class="bigbutton" [value]="1"
+              >انیستول شریانی وریدی</mat-button-toggle
+            >
+            <mat-button-toggle class="bigbutton" [value]="2"
+              >کاتتر وریدی مرکزی</mat-button-toggle
+            >
+            <mat-button-toggle class="bigbutton" [value]="3"
+              >موقت</mat-button-toggle
+            >
+            <mat-button-toggle class="bigbutton" [value]="4"
+              >دایم</mat-button-toggle
+            >
+            <mat-button-toggle class="bigbutton" [value]="5">
+              رگ مصنوعی</mat-button-toggle
+            >
+            <mat-button-toggle class="bigbutton" [value]="6"
+              >سایرموارد</mat-button-toggle
+            >
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div>
+        <label class="biglabel" for="mashin"> نوع و شماره ماشین دیالیز</label>
+        <div>
+          <input
+            fxFlex="500px"
+            class="biginput"
+            type="text"
+            formControlName="dialysisMachine"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="">نوع صافی</label>
+        <div>
+          <input
+            fxFlex="500px"
+            class="biginput"
+            type="text"
+            formControlName="smoothness"
+          />
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div>
+        <label class="biglabel" for="mashin">وزن خشک</label>
+        <div>
+          <input
+            fxFlex="230px"
+            class="biginput"
+            type="text"
+            formControlName="dryWeight"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin">جریان خون</label>
+        <div>
+          <input
+            fxFlex="230px"
+            class="biginput"
+            type="text"
+            formControlName="bloodFlow"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin">جریان محلول</label>
+        <div>
+          <input
+            fxFlex="230px"
+            class="biginput"
+            type="text"
+            formControlName="solutionFlow"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin">TMP</label>
+        <div>
+          <input
+            fxFlex="230px"
+            class="biginput"
+            type="text"
+            formControlName="Tmp"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin">نوع بافر</label>
+        <div>
+          <input
+            fxFlex="230px"
+            class="biginput"
+            type="text"
+            value="BIC"
+            formControlName="bafferType"
+            [formGroup]="dialysisForm"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin">دمای محلول</label>
+        <div>
+          <input
+            fxFlex="230px"
+            class="biginput"
+            type="text"
+            formControlName="solutionTemperature"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <div fxLayout="column" fxLayoutGap="10px">
+        <label class="biglabel"> مارکرهای ویروسی</label>
+        <div>
+          <mat-button-toggle-group
+            class="buttonGroup"
+            formControlName="viralMarket"
+          >
+            <mat-button-toggle class="bigbutton" [value]="1"
+              >HBS</mat-button-toggle
+            >
+            <mat-button-toggle class="bigbutton" [value]="2"
+              >HCV</mat-button-toggle
+            >
+            <mat-button-toggle class="bigbutton" [value]="3"
+              >HIV</mat-button-toggle
+            >
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div>
+        <label class="biglabel" for="mashin">غلظت سدیم محلول</label>
+        <div>
+          <input
+            fxFlex="340px"
+            class="biginput"
+            type="text"
+            formControlName="solubleNa"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin">میزانUF</label>
+        <div>
+          <input
+            fxFlex="340px"
+            class="biginput"
+            type="text"
+            formControlName="UF"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin"> فشار شریانی</label>
+        <div>
+          <input
+            fxFlex="340px"
+            class="biginput"
+            type="text"
+            formControlName="arterialPressure"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="mashin">فشار وریدی</label>
+        <div>
+          <input
+            fxFlex="340px"
+            class="biginput"
+            type="text"
+            formControlName="venousPressure"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <mat-button-toggle-group class="buttonGroup" formControlName="profile">
+        <mat-button-toggle class="bigbutton" [value]="1"
+          >سدیم</mat-button-toggle
+        >
+        <mat-button-toggle class="bigbutton" [value]="2"
+          >بیرکربنات</mat-button-toggle
+        >
+        <mat-button-toggle class="bigbutton" [value]="3">دما</mat-button-toggle>
+        <mat-button-toggle class="bigbutton" [value]="4"
+          >محلول دیالیز</mat-button-toggle
+        >
+        <mat-button-toggle class="bigbutton" [value]="5"
+          >اولترافیلتراسیون</mat-button-toggle
+        >
+      </mat-button-toggle-group>
+    </div>
+    <div fxLayout="row">
+      <div formArrayName="duringDialysis">
+        <div
+          *ngFor="let block of duringDialysis.controls; let i = index"
+          [formGroupName]="i"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          class="my-block"
+          [@AddBlock]
+          [@RemoveBlock]
+        >
+          <div>
+            <label class="biglabel">ساعت</label>
+            <div>
+              <select class="biginput" formControlName="time">
+                <option value="1">اول</option>
+                <option value="2">دوم</option>
+                <option value="3">سوم</option>
+                <option value="4">چهارم</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="biglabel">فشارخون</label>
+            <div>
+              <input
+                fxFlex="340px"
+                class="biginput"
+                type="text"
+                formControlName="bp"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="biglabel">عوارض احتمالی</label>
+            <div>
+              <input
+                fxFlex="340px"
+                class="biginput"
+                type="text"
+                formControlName="possibleSideEffects"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="biglabel"> اقدام درمانی</label>
+            <div>
+              <input
+                fxFlex="340px"
+                class="biginput"
+                type="text"
+                formControlName="therapeuticAction"
+              />
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+            <button mat-icon-button (click)="addduringDialysis()">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              (click)="removeduringDialysis(i)"
+              [disabled]="duringDialysis.length === 1"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <b>هپارین مصرفی:</b>
+    </div>
+    <div fxLayout="row">
+      <div>
+        <label class="biglabel" for="prime">prime</label>
+        <div>
+          <select
+            fxFlex="340px"
+            class="biginput"
+            name="prime"
+            formControlName="prime"
+          >
+            <option value=""></option>
+            <option value="1">0</option>
+            <option value="2">2300</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="Bolus">Bolus</label>
+        <div>
+          <select
+            fxFlex="340px"
+            class="biginput"
+            name="Bolus"
+            formControlName="bolus"
+          >
+            <option value=""></option>
+            <option value="1">5000</option>
+            <option value="2">2300</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="Continuos">Continuos</label>
+        <div>
+          <select
+            fxFlex="340px"
+            class="biginput"
+            name="Continuos"
+            formControlName="continuos"
+          >
+            <option value=""></option>
+            <option value="1">-</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="biglabel" for="Total">Total</label>
+        <div>
+          <select
+            fxFlex="340px"
+            class="biginput"
+            name="Total"
+            formControlName="total"
+          >
+            <option value=""></option>
+            <option value="1">5000</option>
+            <option value="2">2300</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div>
+      <b>فرآورده های خونی و داروهای مصرفی:</b>
+    </div>
+    <div fxLayout="row">
+      <div formArrayName="medications">
+        <div
+          *ngFor="let blocks of medications.controls; let i2 = index"
+          [formGroupName]="i2"
+          fxLayout="row"
+          fxLayoutGap="20px"
+          class="my-blocks"
+          [@AddBlock]
+          [@RemoveBlock]
+        >
+          <div>
+            <label class="biglabel" for="drug">نام دارو</label>
+            <div>
+              <input
+                fxFlex="800px"
+                class="biginput"
+                type="text"
+                name="drug"
+                (input)="search($any($event.target).value)"
+                placeholder="نام دارو"
+                formControlName="name"
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let med of filtereddrug"
+                  [value]="med.FaName"
+                >
+                  <span class="drug-info">
+                    <strong>{{ med.FaName }}</strong>
+                    <span class="eng-name">({{ med.engName }})</span>
+                  </span>
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+          </div>
+
+          <div>
+            <label class="biglabel">مقدار مصرفی</label>
+            <div>
+              <select class="biginput" formControlName="amount">
+                <option value=""></option>
+                <option value="1">هر6 ساعت</option>
+                <option value="2">هر8 ساعت</option>
+                <option value="3">هر12 ساعت</option>
+                <option value="4">هرروز</option>
+                <option value="5">یک روز در میان</option>
+                <option value="6">طبق دستور</option>
+                <option value="7">در صورت نیاز</option>
+                <option value="8">هر1 هفته</option>
+                <option value="9">هر28 روز</option>
+                <option value="10">هر4 ساعت</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="biglabel">نحوه مصرف</label>
+            <div>
+              <select class="biginput" formControlName="Howtouse">
+                <option *ngFor="let key of drugUsageKeys" [value]="key">
+                  {{ drugUsageMap[key] }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+            <button mat-icon-button (click)="addmedications()">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              (click)="removemedications(i2)"
+              [disabled]="medications.length === 1"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxLayout="row">
+        <div>
+          <label class="biglabel" for="startnurse">پرستار شروع کننده</label>
+          <div>
+            <div fxLayout="row" class="biginput" fxFlex="352px">
+              <input
+                type="text"
+                class="nursinput"
+                fxFlex="50px"
+                formControlName="nurse1code"
+              />
+              <div>
+                <select
+                  formControlName="nurse1name"
+                  class="nursinput"
+                  fxFlex="300px"
+                >
+                  <option value="">-</option>
+                  <option *ngFor="let d of nurse" [value]="d.name">
+                    {{ d.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div>
+          <label class="biglabel" for="startnurse">پرستار تمام کننده</label>
+          <div>
+            <div fxLayout="row" class="biginput" fxFlex="352px">
+              <input
+                type="text"
+                class="nursinput"
+                fxFlex="50px"
+                formControlName="nurse2code"
+              />
+              <div>
+                <select
+                  formControlName="nurse2name"
+                  class="nursinput"
+                  fxFlex="300px"
+                >
+                  <option value="">-</option>
+                  <option *ngFor="let d of nurse" [value]="d.name">
+                    {{ d.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- بخش مخصوص چاپ -->
+
+<div #printArea class="print-area">
+  <app-dialysis-print
+    [form]="dialysisForm"
+    [drugUsageMap]="drugUsageMap"
+    [patient$]="patient$"
+  ></app-dialysis-print>
+</div>

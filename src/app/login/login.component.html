@@ -1,0 +1,44 @@
+
+<div class="container">
+  <section class="login-section">
+    <mat-card class="login-card">
+
+      <!-- Header -->
+      <div class="card-header">
+        <img
+          src="assets/image/logo.png"
+          alt="logo"
+          class="logo"
+        />
+        <b class="title">سیستم اطلاعات بیمارستانی </b>
+      </div>
+
+      <!-- Form -->
+      <form class="login-form">
+        <mat-form-field  class="input" appearance="outline" class="full-width">
+          <mat-label>نام کاربری</mat-label>
+          <input matInput class="input"  name="username"
+              [(ngModel)]="username"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>رمز عبور</mat-label>
+          <input matInput  class="input" name="password"
+              type="password"
+              [(ngModel)]="password" type="password" />
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" class="login-btn" (click)="login()">
+          ورود
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="card-footer">
+        <span class="version">نسخه: 0.0.001</span>
+        <p *ngIf="this.error" class="error">نام کاربری یا رمز عبور اشتباه است</p>
+      </div>
+
+    </mat-card>
+  </section>
+</div>

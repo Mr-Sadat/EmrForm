@@ -1,0 +1,21 @@
+<mat-toolbar fxLayout="row" ><button mat-icon-button (click)="openmenu()">
+<mat-icon >menu</mat-icon>
+</button>
+<span>سیستم اطلاعات بیمارستانی 
+</span>
+<div class="person" fxLayout="row" fxLayoutAlign="end">
+ <button mat-icon-button (click)="openUserDialog()" [matTooltip]="auth.getCurrentUser()?.name || ''">
+          <mat-icon >person</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<!-- Template Dialog -->
+ <div class="Dialog" *ngIf="dialogopen">
+    <div class="Dialog-item title">
+     {{ auth.getCurrentUser()?.name }}
+    </div>
+
+    <div class="Dialog-item logout" (click)="logout()">
+      خروج از سیستم
+    </div>
